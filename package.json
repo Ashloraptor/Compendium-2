@@ -1,0 +1,24 @@
+{
+  "name": "compendium",
+  "version": "2.0.0",
+  "description": "A plant-ID API based application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashloraptor/Compendium-2.git"
+  },
+  "keywords": [
+    "plant",
+    "ID",
+    "API"
+  ],
+  "author": "Ashloraptor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ashloraptor/Compendium-2/issues"
+  },
+  "homepage": "https://github.com/Ashloraptor/Compendium-2#readme"
+}
