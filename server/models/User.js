@@ -2,7 +2,8 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // import schema from plant.js
-const plantSchema = require('./plant');
+// const plantSchema = require('./plant');
+const plantSchema = require('./Plant');
 
 const userSchema = new Schema(
   {
@@ -11,12 +12,12 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    // email: {
-    //   type: String,
-    //   required: true,
-    //   unique: true,
-    //   match: [/.+@.+\..+/, 'Must use a valid email address'],
-    // },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must use a valid email address'],
+    },
     password: {
       type: String,
       required: true,
