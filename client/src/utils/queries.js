@@ -7,14 +7,17 @@ export const QUERY_USER = gql`
       username
       email
       password
-      savedBooks{
+      savedPlants{
         _id
-        authors
-        description
-        bookId
-        image
-        link
-        title
+        images
+        latitude
+        longitude
+        similar_images
+        custom_id
+        dateTime
+        health
+        classification_level
+        classification_raw
       }
     }
   }
