@@ -1,6 +1,6 @@
 const typeDefs = `
   type User {
-    _id: ID!
+    id: ID!
     username: String!
     email: String!
     password: String!
@@ -41,6 +41,9 @@ const typeDefs = `
 
   type Query {
     user: User
+    
+    plants: [Plant]
+    plan(id: ID!): Plant
   }
 
   type Mutation {
