@@ -1,0 +1,12 @@
+body {
+    background-color: seagreen;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    border: 5px;
+    padding: 10px;
+
+}
+
+/* create button and other css */
