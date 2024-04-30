@@ -1,24 +1,35 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_USER = gql`
-  query user {
-    user {
+export const GET_USER_PROFILE = gql`
+  query getUserProfile {
+    me {
       _id
       username
       email
-      password
-      savedPlants{
+      plantCount
+      savedplants {
         _id
-        images
-        latitude
-        longitude
-        similar_images
-        custom_id
-        dateTime
-        health
-        classification_level
-        classification_raw
+        authors
+        description
+        plantId
+        image
+        link
+        title
       }
+    }
+  }
+`;
+
+export const GET_PLANT_DETAILS = gql`
+  query getPlantDetails($plantId: String!) {
+    plant(plantId: $plantId) {
+      _id
+      authors
+      description
+      plantId
+      image
+      link
+      title
     }
   }
 `;

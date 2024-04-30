@@ -24,7 +24,7 @@ const typeDefs = `
 
   input PlantInput {
     images: [String]!
-    latituded: Float
+    latitude: Float
     longitude: Float
     similar_images: Boolean
     custom_id: Int
