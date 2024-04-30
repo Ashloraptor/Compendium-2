@@ -1,7 +1,6 @@
 //saved plants will go here//
 //this will use the queries and pull from the plantsearch card
 import React from 'react';
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER_PROFILE } from '../../utils/queries';
 

@@ -1,5 +1,5 @@
 body {
-    background-color: seagreen;
+    background-color: white;
     color: white;
     text-align: center;
     justify-content: center;
@@ -9,4 +9,11 @@ body {
 
 }
 
+#header {
+    background-color: seagreen;
+
+}
 /* create button and other css */
+
+
+  

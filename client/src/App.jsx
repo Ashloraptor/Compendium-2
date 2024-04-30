@@ -65,8 +65,13 @@ import Home from './pages/Home';
 import Login from './components/LoginForm/LoginForm'
 import Search from './pages/SearchPlantForm';
 import Profile from './components/Profile/ProfilePage';
+import './App.css'
 
-import { client } from './client';
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
 
 function App() {
   // const isLoggedIn = true; ---? do we need this
