@@ -22,8 +22,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set savedplants to be an array of data that adheres to the plantSchema
-    savedplants: [plantSchema],
+    // set savedPlants to be an array of data that adheres to the plantSchema
+    savedPlants: [plantSchema],
   },
   // set this to use virtual below
   {
@@ -50,7 +50,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 // when we query a user, we'll also get another field called `plantCount` with the number of saved plants we have
 userSchema.virtual('plantCount').get(function () {
-  return this.savedplants.length;
+  return this.savedPlants.length;
 });
 
 const User = model('User', userSchema);
