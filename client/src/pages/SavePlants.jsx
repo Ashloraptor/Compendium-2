@@ -99,5 +99,26 @@
 
 
 
-const plants = []
+// const plants = []
 
+import React from 'react';
+import { useMutation } from '@apollo/client';
+import { SAVE_PLANT } from '../utils/queries';
+
+const SavePlants = ({ plantId, comment }) => {
+  const [savePlant] = useMutation(SAVE_PLANT, {
+    refetchQueries: [{ query: GET_USER_PROFILE }],
+  });
+
+  const handleSavePlant = () => {
+    savePlant({
+      variables: { plantId, commentText: comment },
+    });
+  };
+
+  return (
+    <button onClick={handleSavePlant}>Save Plant</button>
+  );
+};
+
+export default SavePlants;

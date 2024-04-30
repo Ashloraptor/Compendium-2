@@ -1,83 +1,104 @@
-import React, { useState } from 'react';
-import './Signup.css'; // Make sure to update the CSS file name eventually
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function Signup() {
-  const [formData, setFormData] = useState({
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+
+import Auth from '../utils/auth';
+
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    username: '',
     email: '',
-    password: ''
+    password: '',
   });
-  const [errors, setErrors] = useState({
-    email: '',
-    password: ''
-  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: '' });
-  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validatedEmail(formData.email)) {
-      setErrors({ ...errors, email: 'Please enter a valid email' });
-      return;
-    }
-
-    console.log(formData);
-    setFormData({
-      email: '',
-      password: ''
+    setFormState({
+      ...formState,
+      [name]: value,
     });
   };
 
-  const validatedEmail = (email) => {
-    const emailCharacters = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailCharacters.test(email);
-  };
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
 
-  const requiredField = (e) => {
-    const { name, value } = e.target;
-    if (!value) {
-      setErrors({ ...errors, [name]: 'This field is required' });
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
     }
   };
 
   return (
-    <div className="signup">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            onBlur={requiredField}
-          />
-          {errors.email && <span className="error">{errors.email}</span>}
+    <main className="flex-row justify-center mb-4">
+      <div className="col-12 col-lg-10">
+        <div className="card">
+          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+          <div className="card-body">
+            {data ? (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Your email"
+                  name="email"
+                  type="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+                <button
+                  className="btn btn-block btn-primary"
+                  style={{ cursor: 'pointer' }}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">
+                {error.message}
+              </div>
+            )}
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            onBlur={requiredField}
-          />
-          {errors.password && <span className="error">{errors.password}</span>}
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+      </div>
+    </main>
   );
-}
+};
 
 export default Signup;
+
 ///see app and main
 
 
