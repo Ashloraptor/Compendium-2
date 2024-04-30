@@ -4,11 +4,18 @@ const { User } = require('../models');
 const resolvers = {
   Query: {
 
-    user: async (parent, {}, context) => {
-      console.log(context);
-      const user = await User.findOne({_id: context.user._id});
-      return user;
-    },
+    // user: async (parent, {}, context) => {
+    //   console.log(context);
+    //   // const user = await User.findOne({_id: context.userid});
+    //   const user = await User.findOne({_id: context.user._id});
+    //   return user;
+    // },
+
+    user: async (parent, args) => {
+      return await User.findById(args.id);
+
+      
+    }
     
   },
 
