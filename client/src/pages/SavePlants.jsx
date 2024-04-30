@@ -122,3 +122,4 @@ const SavePlants = ({ plantId, comment }) => {
 };
 
 export default SavePlants;
+//make sure is connecting to API

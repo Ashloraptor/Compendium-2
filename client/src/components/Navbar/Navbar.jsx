@@ -79,3 +79,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+//fixed links are working

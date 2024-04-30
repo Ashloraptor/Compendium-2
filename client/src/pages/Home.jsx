@@ -59,3 +59,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+///change the words and connect to api to see if errors go away

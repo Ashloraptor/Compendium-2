@@ -16,3 +16,4 @@ export default defineConfig({
     },
   },
 });
+/////this is throwing an error in console////

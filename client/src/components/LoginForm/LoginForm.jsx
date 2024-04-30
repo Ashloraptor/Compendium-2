@@ -93,6 +93,9 @@ const Login = (props) => {
 
 export default Login;
 
+
+//fix comments, fix to be able to log in without error
+
 // I used my contact me from my portfolio to create this if it 
 //doesnt work then i need to adjust this page
 //see app and main
