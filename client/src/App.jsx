@@ -21,13 +21,12 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Login from './Login';
-import Signup from './Signup';
-import Home from './Home';
-import Profile from './Profile';
-
+import Login from './components/LoginForm';
+import Signup from './components/SignupForm';
+// import Home from './Home';
+// import Profile from './Profile'; will fix these when my files are redone
 function App() {
-  const isLoggedIn = true; // Replace with your logic to check if user is logged in
+  const isLoggedIn = true;
 
   return (
     <Router>

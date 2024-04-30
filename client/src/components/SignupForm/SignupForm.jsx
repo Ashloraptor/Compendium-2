@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Login.css'; // Make sure to update the CSS file name
+import './Signup.css'; // Make sure to update the CSS file name eventually
 
-function Login() {
+function Signup() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -23,7 +23,6 @@ function Login() {
       setErrors({ ...errors, email: 'Please enter a valid email' });
       return;
     }
-  
 
     console.log(formData);
     setFormData({
@@ -45,8 +44,8 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <h2>Login</h2>
+    <div className="signup">
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
@@ -72,10 +71,10 @@ function Login() {
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Signup;
