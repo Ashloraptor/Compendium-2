@@ -79,4 +79,6 @@ function Login() {
 }
 
 export default Login;
-// I used my contact me from my portfolio to create this if it doesnt work then i need to adjust this page
+// I used my contact me from my portfolio to create this if it 
+//doesnt work then i need to adjust this page
+//see app and main

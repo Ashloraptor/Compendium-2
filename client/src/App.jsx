@@ -53,3 +53,4 @@ function App() {
 }
 
 export default App;
+///change to allow for apollo client, adjust other folders to allow for apollo as well 
