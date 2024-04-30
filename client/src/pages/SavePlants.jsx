@@ -103,7 +103,7 @@
 
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import { SAVE_PLANT } from '../utils/queries';
+import { SAVE_PLANT } from '../utils/mutations';
 
 const SavePlants = ({ plantId, comment }) => {
   const [savePlant] = useMutation(SAVE_PLANT, {

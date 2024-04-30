@@ -1,28 +1,28 @@
-// import { gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-// export const LOGIN_USER = gql`
-//   mutation login($email: String!, $password: String!) {
-//     login(email: $email, password: $password) {
-//       token
-//       user {
-//         _id
-//         username
-//       }
-//     }
-//   }
-// `;
+export const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
 
-// export const ADD_USER = gql`
-//   mutation addUser($email: String!, $username: String!, $password: String!) {
-//     addUser(username: $username, email: $email, password: $password) {
-//         token
-//         user {
-//           _id
-//           username
-//         }
-//       }
-//     }
-//   `;
+export const ADD_USER = gql`
+  mutation addUser($email: String!, $username: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+        token
+        user {
+          _id
+          username
+        }
+      }
+    }
+  `;
 
 // export const SAVE_plant = gql`
 // mutation saveplant($plant: plantInput!){
@@ -62,29 +62,29 @@
 //   }
 // }`
 
-import { gql } from '@apollo/client';
+// import { gql } from '@apollo/client';
 
 
-export const SIGNUP_USER = gql`
-  mutation signup($username: String!, $email: String!, $password: String!) {
-    signup(username: $username, email: $email, password: $password) {
-      _id
-      username
-      email
-    }
-  }
-`;
+// export const SIGNUP_USER = gql`
+//   mutation signup($username: String!, $email: String!, $password: String!) {
+//     signup(username: $username, email: $email, password: $password) {
+//       _id
+//       username
+//       email
+//     }
+//   }
+// `;
 
-export const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      _id
-      username
-      email
-      token
-    }
-  }
-`;
+// export const LOGIN_USER = gql`
+//   mutation login($username: String!, $password: String!) {
+//     login(username: $username, password: $password) {
+//       _id
+//       username
+//       email
+//       token
+//     }
+//   }
+// `;
 
 export const SAVE_PLANT = gql`
 mutation savePlant($plantId: ID!, $commentText: String!) {

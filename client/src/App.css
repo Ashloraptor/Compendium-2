@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: seagreen;
     color: white;
     text-align: center;
     justify-content: center;
@@ -9,10 +9,19 @@ body {
 
 }
 
-#header {
+.App {
     background-color: seagreen;
-
 }
+
+header {
+    background-color: seagreen;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    font-size: 24px;
+  }
 /* create button and other css */
 
 

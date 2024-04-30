@@ -55,41 +55,42 @@
 // export default App;
 ///change to allow for apollo client, adjust other folders to allow for apollo as well 
 
-import { ApolloProvider } from '@apollo/client';
+// import { ApolloProvider } from '@apollo/client';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Navigation from './components/Navbar/Navbar';
 import Home from './pages/Home';
-import Login from './components/LoginForm/LoginForm'
+import Login from './components/LoginForm/LoginForm';
 import Search from './pages/SearchPlantForm';
 import Profile from './components/Profile/ProfilePage';
-import './App.css'
+import './App.css';
+
 
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
-
 function App() {
-  // const isLoggedIn = true; ---? do we need this
-
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Header />
-        <Navigation onNavigationClick={handleNavigationClick} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </ApolloProvider>
+    <div className="App">
+      <ApolloProvider client={client}>
+        <Router>
+          <Header />
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ApolloProvider>
+    </div>
   );
 }
 
