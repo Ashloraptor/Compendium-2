@@ -23,7 +23,7 @@ const userSchema = new Schema(
       required: true,
     },
     // set savedplants to be an array of data that adheres to the plantSchema
-    savedplants: [plantSchema],
+    savedPlants: [plantSchema],
   },
   // set this to use virtual below
   {
