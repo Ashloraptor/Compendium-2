@@ -4,6 +4,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
 
+
     user: async (parent, {}, context) => {
       console.log(context);
       // const user = await User.findOne({_id: context.userid});
@@ -17,6 +18,7 @@ const resolvers = {
 
       
     // }
+
     
   },
 
