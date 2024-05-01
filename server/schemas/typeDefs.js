@@ -1,6 +1,6 @@
 const typeDefs = `
   type User {
-    _id: ID!
+    id: ID!
     username: String!
     email: String!
     password: String!
@@ -43,7 +43,9 @@ const typeDefs = `
     user: User
     
     plants: [Plant]
+
     plant(id: ID!): Plant
+
   }
 
   type Mutation {
