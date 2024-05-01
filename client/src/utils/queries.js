@@ -121,4 +121,27 @@ export const QUERY_ME = gql`
   }
 `;
 
+// export const QUERY_USER = gql`
+//   query user {
+//     user {
+//       _id
+//       username
+//       email
+//       password
+//       savedPlants{
+//         _id
+//         images
+//         latitude
+//         longitude
+//         similar_images
+//         custom_id
+//         dateTime
+//         health
+//         classification_level
+//         classification_raw
+//       }
+//     }
+//   }
+// `;
+
 ///check in to make sure these changes dont effect the back end
