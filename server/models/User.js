@@ -22,7 +22,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+
     // set savedPlants to be an array of data that adheres to the plantSchema
+
+
     savedPlants: [plantSchema],
   },
   // set this to use virtual below
