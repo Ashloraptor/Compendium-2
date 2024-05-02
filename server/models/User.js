@@ -1,40 +1,59 @@
-const { Schema, model } = require('mongoose');
+
 const bcrypt = require('bcrypt');
+const { Schema, model } = require('mongoose');
 
-// import schema from plant.js
-// const plantSchema = require('./plant');
-const plantSchema = require('./Plant');
-
-const userSchema = new Schema(
+const Users = new Schema(
   {
+   
+    firstName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     username: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     password: {
       type: String,
       required: true,
+      minlength: 5,
     },
-    // set savedplants to be an array of data that adheres to the plantSchema
-    savedplants: [plantSchema],
+    about: {
+      type: String,
+      maxlength: 280
+    },
+   
+    plants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Plant',
+      },
+    ],
+   
   },
-  // set this to use virtual below
   {
     toJSON: {
       virtuals: true,
+      getters: true,
     },
   }
 );
 
-// hash user password
-userSchema.pre('save', async function (next) {
+// set up pre-save middleware to create password
+Users.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -43,16 +62,15 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-// custom method to compare and validate password for logging in
-userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+// compare the incoming password with the hashed password
+Users.methods.isCorrectPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `plantCount` with the number of saved plants we have
-userSchema.virtual('plantCount').get(function () {
-  return this.savedplants.length;
+Users.virtual('friendCount').get(function () {
+  return this.friends.length;
 });
 
-const User = model('User', userSchema);
+const User = model('User', Users);
 
 module.exports = User;

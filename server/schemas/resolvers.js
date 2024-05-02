@@ -1,69 +1,179 @@
-const { User } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Post, Plant } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    // authentication
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('posts')
+          .populate('plants')
+         
 
-    // user: async (parent, {}, context) => {
-    //   console.log(context);
-    //   // const user = await User.findOne({_id: context.userid});
-    //   const user = await User.findOne({_id: context.user._id});
-    //   return user;
-    // },
+        return userData;
+      }
 
-    user: async (parent, args) => {
-      return await User.findById(args.id);
-
+      throw new AuthenticationError('Wrong');
+    },
+    // get all users
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('plants')
+       
+    },
+    // get a user by username
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
       
-    }
+        .populate('plants')
+       
+    },
     
+    plant: async (parent, { _id }) => {
+      return Plant.findOne({ _id });
+    },
+    getUsers: async (parent, args) => {
+      const { search } = args;
+
+      let searchQuery = {};
+
+      if (search) {
+        searchQuery = {
+          $or: [
+            { userName: { $regex: search, $options: 'i' } },
+          ],
+        };
+      }
+
+      const users = await User.find(searchQuery);
+
+      return {
+        users,
+      };
+    },
   },
-
   Mutation: {
-
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      //login user after creation
       const token = signToken(user);
-      return {token, user};
-    },
 
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+      return { token, user };
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError('Wong');
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Wong');
+        
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw AuthenticationError;
+        throw new AuthenticationError('Wong');
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
+    
+    
+    addPlant: async (parent, args, context) => {
+      if (context.user) {
+        const plant = await Plant.create({
+          ...args,
+          username: context.user.username,
+        });
 
-    savePlant: async(parent, args, context) =>{
-      const user = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: { savedPlants: args.plant } },
-        { new: true, runValidators: true }
-      );
-      return user;
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { plants: plant._id } },
+          { new: true }
+        );
+
+        return plant;
+      }
+
+      throw new AuthenticationError('Log in');
     },
+    updatePlant: async (parent, args, context) => {
+      if (context.user) {
+        const {
+          plantId,
+          image_path,
+          common_name,
+          description,
+        } = args;
+        console.log(common_name);
+        const plant = await Plant.findByIdAndUpdate(
+          plantId,
+          {
+            common_name: common_name,
+            description: description,
+            image_path: image_path,
+          },
+          { new: true }
+        );
+        console.log(plant);
+        return plant;
+      }
 
-    removePlant: async(parent, args, context) =>{
-      const user = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: {savedPlants: {custom_id: args.custom_id}}}, //not sure if custom_id is accurate, needs to be Plant.id's ID of plants, maybe access token?
-        {new: true}
-      );
-      return user;
-    }
-  }
+      throw new AuthenticationError('Log in');
+    },
+    removePlant: async (parent, { plantId }, context) => {
+      if (context.user) {
+        const plant = await Plant.findByIdAndDelete(
+          plantId,
+          function (err, docs) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('Deleted : ', docs);
+            }
+          }
+        );
+        return plant;
+      }
+
+      throw new AuthenticationError('Log in');
+    },
+   
+    addPlantHistory: async (parent, { plantId, note_body }, context) => {
+      if (context.user) {
+        const updatedPlant = await Plant.findOneAndUpdate(
+          { _id: plantId },
+          {
+            $push: {
+              plantHistory: { note_body },
+            },
+          },
+          { new: true, runValidators: true }
+        );
+
+        return updatedPlant;
+      }
+
+      throw new AuthenticationError('Log in');
+    },
+    
+   
+    
+  },
 };
 
 module.exports = resolvers;

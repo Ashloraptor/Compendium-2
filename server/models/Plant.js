@@ -1,37 +1,47 @@
-const { Schema } = require('mongoose');
+const plantHist = require('./PlantHistory');
 
-// This is a subdocument schema, it won't become its own model but we'll use it as the schema for the User's `savedPlants` array in User.js
-const plantSchema = new Schema({
-  images: [
-    {
+const { Schema, model } = require('mongoose');
+
+const plants= new Schema(
+  {
+   
+    scientific_name: {
+      type: String,
+      required: true,
+    },
+    common_name: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      maxlength: 500
+    },
+    image_path: {
+      type: String,
+      required: true,
+    },
+    usda_zone: {
       type: String,
     },
-  ],
-//   latitude: {
-//     type: Float,
-//   },
-//   longitude: {
-//     type: Float,
-//   },
-  similar_images: {
-    type: Boolean,
+    pruning: {
+      type: String,
+    },
+    fertilization: {
+      type: String,
+    },
+    water: {
+      type: String,
+    },
+    plantHistory: [plantHist],
   },
-  // Supposed to be Plant.ID's ID for plants
-//   custom_id: {
-//     type: Int,
-//   },
-  dateTime: {
-    type: String,
-  },
-  health: {
-    type: String,
-  },
-  classification_level: {
-    type: String,
-  },
-  classification_raw: {
-    type: Boolean,
-  },
-});
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
-module.exports = plantSchema;
+const Plant = model('Plant', plants);
+
+module.exports = Plant;
