@@ -62,7 +62,7 @@ export const searchPlants = (files) => {
     console.log("APIKEY", API_KEY)
     
     const data = {
-      api_key: "Svu3TpQRHpDX8CVSWwkbErq8QwhyDvbzYoBsqkkx26kWPXe9b9",
+      api_key: "apikey here",
       images: base64files,
      
       modifiers: ["crops_fast", "similar_images"],

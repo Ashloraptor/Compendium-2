@@ -1,10 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post, Plant } = require('../models');
+const { User,  Plant } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    // authentication
+    
+
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
@@ -18,14 +19,6 @@ const resolvers = {
 
       throw new AuthenticationError('Wrong');
     },
-    // get all users
-    users: async () => {
-      return User.find()
-        .select('-__v -password')
-        .populate('plants')
-       
-    },
-    // get a user by username
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
@@ -34,6 +27,12 @@ const resolvers = {
        
     },
     
+    
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('plants')   
+    },
     plant: async (parent, { _id }) => {
       return Plant.findOne({ _id });
     },
