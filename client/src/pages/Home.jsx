@@ -34,9 +34,9 @@ const HomePage = () => {
           <div className="container">
             <h2>Your Plants</h2>
             {loading ? (
-              <p>Loading plants...</p>
+              <p>Loading plant</p>
             ) : error ? (
-              <p>Error fetching plants. Please try again later.</p>
+              <p>Error fetching plant</p>
             ) : (
               <ul>
                 {plants.map(plant => (

@@ -1,11 +1,20 @@
-const typeDefs = `
-  type User {
-    id: ID!
-    username: String!
-    email: String!
-    password: String!
-    plantCount: Int
-    savedPlants: [Plant]
+const { gql } = require('apollo-server-express');
+
+const typeDefs = gql`
+type User {
+  _id: ID
+  createdAt: String
+  firstName: String
+  lastName: String
+  username: String
+  email: String
+  about: String
+  posts: [Post]
+  plants: [Plant]
+}
+
+  type UsersResult {
+    users: [User]
   }
 
   type Plant {
@@ -24,7 +33,7 @@ const typeDefs = `
 
   input PlantInput {
     images: [String]!
-    latitude: Float
+    latituded: Float
     longitude: Float
     similar_images: Boolean
     custom_id: Int
@@ -43,16 +52,52 @@ const typeDefs = `
     user: User
     
     plants: [Plant]
-
-    plant(id: ID!): Plant
-
+    plan(id: ID!): Plant
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+      username: String!
+    ): Auth
+    updateUser(
+      firstName: String
+      lastName: String
+      email: String
+      password: String
+      about: String
+    ): User
     login(email: String!, password: String!): Auth
-    savePlant(plant: PlantInput!): User
-    removePlant(plantId: String!): User
+    addPost(postTitle: String!, postText: String!): Post
+    addComment(postId: ID!, commentBody: String!): Post
+    addPlantHistory(plantId: ID!, note_body: String): Plant
+    removePlantHistory(plantId: ID!, historyId: ID!): Plant
+    addPlant(
+      scientific_name: String!
+      common_name: String!
+      image_path: String!
+      usda_zone: String
+      description: String
+      pruning: String
+      fertilization: String
+      water: String
+    ): Plant
+    updatePlant(
+      plantId: ID!
+      common_name: String
+      usda_zone: String
+      image_path: String
+      description: String
+      pruning: String
+      fertilization: String
+      water: String
+    ): Plant
+    removePlant(plantId: ID!): Plant
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
   }
 `;
 

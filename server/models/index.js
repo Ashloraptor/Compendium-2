@@ -42,5 +42,9 @@ module.exports = { User };
 
 const User = require('./User');
 
-module.exports = { User };
+const Plant = require('./Plant');
+
+const Post = require('./Post');
+
+module.exports = { User, Post, Plant};
 

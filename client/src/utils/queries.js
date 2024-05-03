@@ -34,88 +34,80 @@
 //   }
 // `;
 import { gql } from '@apollo/client';
-export const SEARCH_PLANTS = gql`
-  query searchPlants($query: String!) {
-    searchPlants(query: $query) {
-      _id
-      title
-      description
-      authors
-      image
-      link
-      createdAt
-    }
-  }
-`;
 
-export const GET_USER_PROFILE = gql`
-  query getUserProfile {
-    me {
+export const QUERY_USER = gql`
+  query User($username: String!) {
+    user(username: $username) {
       _id
+      createdAt
       username
       email
-      plantCount
-      savedPlants {
+    
+      plants {
         _id
-        title
+        scientific_name
+        common_name
         description
-        authors
-        image
-        link
-        createdAt
+        image_path
+        plantHistory {
+          createdAt
+          note_body
+        }
       }
     }
   }
 `;
 
-export const GET_PLANT_DETAILS = gql`
-  query getPlantDetails($plantId: String!) {
-    plant(plantId: $plantId) {
+export const QUERY_ALL_USERS = gql`
+  query Users {
+    users {
       _id
-      title
-      description
-      authors
-      image
-      link
       createdAt
+      username
+      email
+      plants {
+        _id
+        scientific_name
+        common_name
+        description
+        image_path
+      }
     }
   }
 `;
+////////
+export const SEARCH_USER_QUERY = gql`
+  query GetUsers($search: String) {
+    getUsers(search: $search) {
+      users {
 
-export const GET_SINGLE_PLANT = gql`
-  query getSinglePlant($plantId: ID!) {
-    plant(plantId: $plantId) {
-      _id
-      title
-      description
-      authors
-      image
-      link
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
+        username
       }
     }
   }
 `;
 
-export const QUERY_ME = gql`
-  query me {
+export const ME = gql`
+  query Me {
     me {
       _id
+      createdAt
+      firstName
+      lastName
       username
       email
-      savedPlants {
+      password
+      savedPlants{
         _id
-        title
-        description
-        authors
-        image
-        link
-        createdAt
+        images
+        latitude
+        longitude
+        similar_images
+        custom_id
+        dateTime
+        health
+        classification_level
+        classification_raw
       }
     }
   }
