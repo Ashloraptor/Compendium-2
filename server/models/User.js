@@ -1,6 +1,23 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const plantSchema = require('./Plant');
 
+const userSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+\@.+\..+/, 'Please enter a valid email address'],
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  savedPlants: [plantSchema], // Array of Plant subdocuments
 // import schema from plant.js
 // const plantSchema = require('./plant');
 const plantSchema = require('./Plant');
