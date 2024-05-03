@@ -18,29 +18,40 @@ type User {
   }
 
   type Plant {
-    _id: ID!
-    images: [String]!
-    latitude: Float
-    longitude: Float
-    similar_images: Boolean
-    custom_id: Int
-    dateTime: String
-    health: String
-    classification_level: String
-    classification_raw: Boolean
-    
+    _id: ID
+    createdAt: String
+    scientific_name: String
+    common_name: String
+    description: String
+    image_path: String
+    usda_zone: String
+    pruning: String
+    fertilization: String
+    water: String
+    plantHistory: [PlantHistory]
   }
 
-  input PlantInput {
-    images: [String]!
-    latituded: Float
-    longitude: Float
-    similar_images: Boolean
-    custom_id: Int
-    dateTime: String
-    health: String
-    classification_level: String
-    classification_raw: Boolean
+  type Post {
+    _id: ID
+    postTitle: String
+    postText: String
+    createdAt: String
+    username: String
+    commentCount: Int
+    comments: [Comment]
+  }
+
+  type Comment {
+    _id: ID
+    commentBody: String
+    createdAt: String
+    username: String
+  }
+
+  type PlantHistory {
+    _id: ID
+    createdAt: String
+    note_body: String
   }
 
   type Auth {
@@ -49,10 +60,13 @@ type User {
   }
 
   type Query {
-    user: User
-    
-    plants: [Plant]
-    plan(id: ID!): Plant
+    me: User
+    users: [User]
+    user(username: String!): User
+    getUsers(search: String): UsersResult
+    posts: [Post]
+    post(_id: ID!): Post
+    plant(_id: ID!): Plant
   }
 
   type Mutation {
