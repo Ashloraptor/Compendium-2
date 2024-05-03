@@ -1,3 +1,4 @@
+
 // const Sequelize = require('sequelize');
 // const sequelize = require('../config/connection');
 
@@ -37,5 +38,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/yourDatabaseNam
 const User = require('./User');
 
 // Export the models
+module.exports = { User };
+
+const User = require('./User');
+
 module.exports = { User };
 

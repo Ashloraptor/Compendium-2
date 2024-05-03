@@ -1,11 +1,11 @@
 const typeDefs = `
   type User {
-    _id: ID!
+    id: ID!
     username: String!
     email: String!
     password: String!
-    plantCount: Int!
-    savedPlants: [Plant]!
+    plantCount: Int
+    savedPlants: [Plant]
   }
 
   type Plant {
@@ -24,7 +24,7 @@ const typeDefs = `
 
   input PlantInput {
     images: [String]!
-    latituded: Float
+    latitude: Float
     longitude: Float
     similar_images: Boolean
     custom_id: Int
@@ -41,6 +41,11 @@ const typeDefs = `
 
   type Query {
     user: User
+    
+    plants: [Plant]
+
+    plant(id: ID!): Plant
+
   }
 
   type Mutation {
