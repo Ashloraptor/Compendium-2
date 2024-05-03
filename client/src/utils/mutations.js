@@ -1,11 +1,14 @@
 import { gql } from '@apollo/client';
 
-export const LOGIN_USER = gql`
+export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
       user {
         _id
+        firstName
+        lastName
+        email
         username
       }
     }
@@ -13,135 +16,115 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($email: String!, $username: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-        token
-        user {
-          _id
-          username
-        }
+  mutation addUser(
+    $username: String!
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+  ) {
+    addUser(
+      username: $username
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
+      token
+      user {
+        _id
       }
     }
-  `;
+  }
+`;
 
-// export const SAVE_plant = gql`
-// mutation saveplant($plant: plantInput!){
-//   saveplant(plant: $plant) {
-//     _id
-//     username
-//     email
-//     plantCount
-//     savedplants{
-//       _id
-//       authors
-//       description
-//       plantId
-//       image
-//       link
-//       title
-//     }
-//   }
-// }`;
+export const UPDATE_USER = gql`
+  mutation UPDATE_USER(
+    $about: String
+    $email: String
+    $firstName: String
+    $lastName: String
+  ) {
+    updateUser(
+      about: $about
+      email: $email
+      firstName: $firstName
+      lastName: $lastName
+    ) {
+      createdAt
+      firstName
+      lastName
+      username
+      email
+      about
+     
+    }
+  }
+`;
 
-// export const REMOVE_plant = gql`
-// mutation removeplant($plantId: String!){
-//   removeplant(plantId: $plantId) {
-//     _id
-//     username
-//     email
-//     plantCount
-//     savedplants{
-//       _id
-//       authors
-//       description
-//       plantId
-//       image
-//       link
-//       title
-//     }
-//   }
-// }`
+export const ADD_PLANT = gql`
+  mutation ADD_PLANT(
+    $scientificName: String!
+    $commonName: String!
+    $imagePath: String!
+    $description: String
+    
+  ) {
+    addPlant(
+      scientific_name: $scientificName
+      common_name: $commonName
+      description: $description
+      image_path: $imagePath
+    ) {
+      _id
+      createdAt
+      scientific_name
+      common_name
+      description
+      image_path
+    }
+  }
+`;
 
-// import { gql } from '@apollo/client';
+export const UPDATE_PLANT = gql`
+  mutation UPDATE_PLANT(
+    $plantId: ID!
+    $imagePath: String
+    $commonName: String!
+    $description: String
+  ) {
+    updatePlant(
+      plantId: $plantId
+      image_path: $imagePath
+      common_name: $commonName
+      description: $description
+    ) {
+      _id
+      authors
+      description
+      plantId
+      image
+      link
+      title
+    }
+  }
+}`;
 
-
-// export const SIGNUP_USER = gql`
-//   mutation signup($username: String!, $email: String!, $password: String!) {
-//     signup(username: $username, email: $email, password: $password) {
-//       _id
-//       username
-//       email
-//     }
-//   }
-// `;
-
-// export const LOGIN_USER = gql`
-//   mutation login($username: String!, $password: String!) {
-//     login(username: $username, password: $password) {
-//       _id
-//       username
-//       email
-//       token
-//     }
-//   }
-// `;
-
-export const SAVE_PLANT = gql`
-mutation savePlant($plantId: ID!, $commentText: String!) {
-  savePlant(plantId: $plantId, commentText: $commentText) {
+export const REMOVE_plant = gql`
+mutation removeplant($plantId: String!){
+  removeplant(plantId: $plantId) {
     _id
     username
     email
-    savedPlants {
+    plantCount
+    savedplants{
       _id
-      title
-      description
       authors
+      description
+      plantId
       image
       link
-      createdAt
-      comment {
-        _id
-        text
-      }
+      title
     }
   }
-}
-`;
-
-export const COMMENT_ON_PLANT = gql`
-  mutation commentOnPlant($plantId: ID!, $commentText: String!) {
-    commentOnPlant(plantId: $plantId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
-    }
-  }
-`;
-
-export const REMOVE_PLANT = gql`
-  mutation removePlant($plantId: ID!) {
-    removePlant(plantId: $plantId) {
-      _id
-      username
-      email
-      savedPlants {
-        _id
-        title
-        description
-        authors
-        image
-        link
-        createdAt
-      }
-    }
-  }
-`;
-//check to see if changes effect back end
+}`
