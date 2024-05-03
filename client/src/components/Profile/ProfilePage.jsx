@@ -2,10 +2,10 @@
 //this will use the queries and pull from the plantsearch card
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_USER_PROFILE } from '../../utils/queries';
+import { ME } from '../../utils/queries';
 
 const ProfilePage = () => {
-  const { loading, error, data } = useQuery(GET_USER_PROFILE);
+  const { loading, error, data } = useQuery(ME);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

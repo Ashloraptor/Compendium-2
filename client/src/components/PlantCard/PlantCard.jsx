@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import UpdatePlant from "../UpdatePlant";
+import UpdatePlant from "../UpdatePlant/UpdatePlant";
 import Chip from "@mui/material/Chip";
 import AddIcon from "@mui/icons-material/Add";
 

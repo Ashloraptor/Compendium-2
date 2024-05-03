@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import Chip from '@mui/material/Chip';
 import AddIcon from '@mui/icons-material/Add';
-import AddPlants from '../AddPlants';
+import AddPlants from '../AddPlants/AddPlants';
 import { Link } from 'react-router-dom';
 
 

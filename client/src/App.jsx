@@ -43,15 +43,16 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  
 } from 'react-router-dom';
 
-import Nav from './components/Nav';
+import Nav from './components/Nav/Nav';
 import Login from './pages/Login';
 import ImageFinder from './pages/ImageFinder';
 import Signup from './pages/Signup';
-import Plant from './pages/Plant'
-import Home from './pages/Home'
+import Plant from './pages/Plant';
+import Home from './pages/Home';
+import ProfilePage from './components/Profile/ProfilePage';
+import SearchPlantForm from './pages/SearchPlantForm';
 
 import {
   ApolloProvider,
@@ -88,11 +89,13 @@ function App() {
         <Nav/>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/ImageFinder/:username' element={<ImageFinder />} />
-          <Route path='/ImageFinder' element={<ImageFinder />} />
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/search-plant' element={<SearchPlantForm />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/Login' element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/plant/:id' element={<Plant />} />
+          <Route path='/image-finder/:username' element={<ImageFinder />} />
+          <Route path='/image-finder' element={<ImageFinder />} />
         </Routes>
       </Router>
     </ApolloProvider>
