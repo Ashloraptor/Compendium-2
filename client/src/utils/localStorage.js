@@ -1,5 +1,5 @@
 export const getSavedPlantIds = () => {
-    const savedplantIds = localStorage.getItem('saved_plants')
+    const savedPlantIds = localStorage.getItem('saved_plants')
       ? JSON.parse(localStorage.getItem('saved_plants'))
       : [];
   

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { useMutation } from '@apollo/client';
 
 //imported from Mod 21
@@ -17,7 +19,7 @@ import { ADD_PLANT} from '../utils/mutations';
 import { savePlantIds, getSavedPlantIds } from '../utils/localStorage';
 
 const SearchPlants = () => {
-  const [savePlant, {error, data}] = useMutation(SAVE_PLANT);
+  const [savePlant, {error, data}] = useMutation(ADD_PLANT);
   
   // create state for holding returned api data
   const [searchedPlants, setSearchedPlants] = useState([]);
@@ -194,5 +196,6 @@ const SearchPlants = () => {
 //   );
 // };
 
-export default PlantSearchForm;
+// export default plantSearchForm;
 //fix to work with api
+export default SearchPlants;
