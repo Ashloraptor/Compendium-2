@@ -140,6 +140,22 @@ const Nav = ({}) => {
           >
             Search Plant
           </Button>
+
+          <Button
+            component={Link}
+            to='/ImageFinder'
+            sx={{
+              m: 1,
+              color: 'green',
+              bgcolor: 'white',
+              ':hover': {
+                bgcolor: 'green',
+                color: 'white',
+              },
+            }}
+          >
+            Search Plant
+          </Button>
           <Button
             component={Link}
             to='/'
