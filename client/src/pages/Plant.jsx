@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import PlantCard from "../components/PlantCard";
+import PlantCard from "../components/PlantCard/PlantCard";
 
 import { QUERY_PLANT } from "../utils/queries";
 

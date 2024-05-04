@@ -29,11 +29,21 @@ const Users = new Schema(
     password: {
       type: String,
       required: true,
+      minlength: 5,
     },
-    // set savedplants to be an array of data that adheres to the plantSchema
-    savedplants: [plantSchema],
+    about: {
+      type: String,
+      maxlength: 280
+    },
+   
+    plants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Plant',
+      },
+    ],
+   
   },
-  // set this to use virtual below
   {
     toJSON: {
       virtuals: true,
@@ -60,10 +70,7 @@ Users.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-// when we query a user, we'll also get another field called `plantCount` with the number of saved plants we have
-userSchema.virtual('plantCount').get(function () {
-  return this.savedplants.length;
-});
+
 
 const User = model('User', Users);
 

@@ -100,31 +100,66 @@ export const UPDATE_PLANT = gql`
       description: $description
     ) {
       _id
-      authors
+      createdAt
+      scientific_name
+      common_name
+      image_path
       description
-      plantId
-      image
-      link
-      title
+      image_path
     }
   }
-}`;
+`;
 
-export const REMOVE_plant = gql`
-mutation removeplant($plantId: String!){
-  removeplant(plantId: $plantId) {
-    _id
-    username
-    email
-    plantCount
-    savedplants{
+export const REMOVE_PLANT = gql`
+  mutation REMOVE_PLANT($plantId: ID!) {
+    removePlant(plantId: $plantId) {
       _id
-      authors
+      createdAt
+      scientific_name
+      common_name
       description
-      plantId
-      image
-      link
-      title
+      image_path
+      plantHistory {
+        _id
+        createdAt
+        note_body
+      }
     }
   }
-}`
+`;
+
+export const ADD_PLANT_HISTORY = gql`
+  mutation ADD_PLANT_HISTORY($plantId: ID!, $noteBody: String) {
+    addPlantHistory(plantId: $plantId, note_body: $noteBody) {
+      _id
+      createdAt
+      scientific_name
+      common_name
+      description
+      image_path
+      plantHistory {
+        createdAt
+        note_body
+      }
+
+    }
+  }
+`;
+
+export const REMOVE_HISTORY = gql`
+  mutation REMOVE_HISTORY($plantId: ID!, $historyId: ID!) {
+    removePlantHistory(plantId: $plantId, historyId: $historyId) {
+      _id
+      createdAt
+      scientific_name
+      common_name
+      description
+      image_path
+      plantHistory {
+        _id
+        createdAt
+        note_body
+      }
+    }
+  }
+`;

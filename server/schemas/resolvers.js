@@ -51,9 +51,10 @@ const resolvers = {
 
       const users = await User.find(searchQuery);
 
-      
-    }
-    
+      return {
+        users,
+      };
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -173,5 +174,7 @@ const resolvers = {
     
   },
 };
+
+module.exports = resolvers;
 
 module.exports = resolvers;
