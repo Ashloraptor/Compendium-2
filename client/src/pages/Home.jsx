@@ -1,63 +1,45 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { SEARCH_PLANTS } from '../utils/queries';
-import PlantSearchForm from './SearchPlantForm';
-import SavePlants from './SavePlants';
+import './Home.css'; // Import CSS for styling
 
-
-const HomePage = () => {
-  // Fetch plant data
-  const { loading, error, data } = useQuery(SEARCH_PLANTS);
-
-  // Extract plants from data (assuming 'searchPlants' is the field name)
-  const plants = data?.searchPlants || [];
-
-  // Define a function to handle search
-  const handleSearch = (searchQuery, comment) => {
-    // Implement search logic here
-    console.log('Searching for:', searchQuery);
-    console.log('Comment:', comment);
-  };
-
+const Homepage = () => {
   return (
-    <div className="home-page">
-      <header>
-        {/* Header content */}
+    <div className="homepage">
+      <div className='container'><header>
+        <h1>Welcome to your Compendium!</h1>
       </header>
       <main>
-        <section className="search-section">
-          <div className="container">
-            <PlantSearchForm onSearch={handleSearch} />
+        <section className="about-section">
+          <h2>✨A place to document your travels and adventures with the plants you find along the way✨</h2>
+          {/* <p>I'm a lover of all things cute and cuddly! 🐻✨</p> */}
+          <p>Join me on my adorable adventures!</p>
+        </section>
+        <section className="gallery-section">
+          <h2>Cute Gallery</h2>
+          <div className="image-grid">
+            <img src="cute-image1.jpg" alt="Cute Image 1" />
+            <img src="cute-image2.jpg" alt="Cute Image 2" />
+            <img src="cute-image3.jpg" alt="Cute Image 3" />
+            {/* Add more cute images here */}
           </div>
         </section>
-        <section className="plant-list-section">
-          <div className="container">
-            <h2>Your Plants</h2>
-            {loading ? (
-              <p>Loading plant</p>
-            ) : error ? (
-              <p>Error fetching plant</p>
-            ) : (
-              <ul>
-                {plants.map(plant => (
-                  <li key={plant.id}>
-                    {plant.name}
-                    {/* Render SavePlants component for each plant */}
-                    <SavePlants plantId={plant.id} comment="Add your comment here" />
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+        <section className="add-friends-section">
+          <h2>Add Friends (Coming Soon)</h2>
+          <p>Stay tuned for the ability to add friends!</p>
+          <p>Connect with fellow cute enthusiasts!</p>
+        </section>
+        <section className="contact-section">
+          <h2>Contact</h2>
+          <p>Let's stay in touch!</p>
+          <p>Email: cute@example.com</p>
+          <p>Phone: 123-456-7890</p>
         </section>
       </main>
       <footer>
-        {/* Footer content */}
+        <p>&copy; 2024 Compendium</p>
       </footer>
+    </div>
     </div>
   );
 };
 
-export default HomePage;
-
-///change the words and connect to api to see if errors go away
+export default Homepage;

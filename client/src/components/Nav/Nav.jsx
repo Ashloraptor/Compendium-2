@@ -154,7 +154,7 @@ const Nav = ({}) => {
               },
             }}
           >
-            Search Plant
+            Image Search
           </Button>
           <Button
             component={Link}
