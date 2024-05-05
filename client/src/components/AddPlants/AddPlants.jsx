@@ -14,7 +14,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import SaveIcon from "@mui/icons-material/Save";
 
 import { green } from "@mui/material/colors";
-import { searchPlants } from "../../utils/API";
+import { searchPlants } from "../../../../server/utils/API";
 import { useMutation } from "@apollo/client";
 import { ME } from "../../utils/queries";
 import { ADD_PLANT } from "../../utils/mutations";
