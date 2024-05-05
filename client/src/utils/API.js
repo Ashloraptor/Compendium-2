@@ -58,13 +58,13 @@ export const searchPlants = (files) => {
 
   return Promise.all(promises).then((base64files) => {
 
-    const API_KEY =  "KeyHere";
+    const API_KEY =  "Svu3TpQRHpDX8CVSWwkbErq8QwhyDvbzYoBsqkkx26kWPXe9b9";
     
     
     const data = {
       api_key: API_KEY,
       images: base64files,
-     
+      
       modifiers: ["crops_fast", "similar_images"],
       plant_language: "en",
       

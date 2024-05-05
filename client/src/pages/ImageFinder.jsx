@@ -23,7 +23,7 @@ const styles = {
   },
 };
 
-const Profile = () => {
+const ProfileImage = () => {
 
 
   const { username: userParam } = useParams();
@@ -68,4 +68,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileImage;
