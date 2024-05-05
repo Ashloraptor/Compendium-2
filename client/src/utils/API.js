@@ -58,11 +58,11 @@ export const searchPlants = (files) => {
 
   return Promise.all(promises).then((base64files) => {
 
-    const API_KEY = process.env.REACT_APP_API_KEY;
-    console.log("APIKEY", API_KEY)
+    const API_KEY =  "KeyHere";
+    
     
     const data = {
-      api_key: "apikey here",
+      api_key: API_KEY,
       images: base64files,
      
       modifiers: ["crops_fast", "similar_images"],
