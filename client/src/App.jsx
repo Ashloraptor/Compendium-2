@@ -94,8 +94,8 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/plant/:id' element={<Plant />} />
-          <Route path='/image-finder/:username' element={<ImageFinder />} />
-          <Route path='/image-finder' element={<ImageFinder />} />
+          <Route path='/ImageFinder/:username' element={<ImageFinder />} />
+          <Route path='/ImageFinder' element={<ImageFinder />} />
         </Routes>
       </Router>
     </ApolloProvider>
