@@ -1,44 +1,44 @@
 
-export const getMe = (token) => {
-  return fetch("/api/users/me", {
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-  });
-};
+// export const getMe = (token) => {
+//   return fetch("/api/users/me", {
+//     headers: {
+//       "Content-Type": "application/json",
+//       authorization: `Bearer ${token}`,
+//     },
+//   });
+// };
 
-export const AddUser = (userData) => {
-  return fetch("/api/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
-};
+// export const AddUser = (userData) => {
+//   return fetch("/api/users", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(userData),
+//   });
+// };
 
-export const login = (userData) => {
-  return fetch("/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
-};
+// export const login = (userData) => {
+//   return fetch("/api/users/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(userData),
+//   });
+// };
 
 
-export const savePlant = (plantData, token) => {
-  return fetch("/api/users", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(plantData),
-  });
-};
+// export const savePlant = (plantData, token) => {
+//   return fetch("/api/users", {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//       authorization: `Bearer ${token}`,
+//     },
+//     body: JSON.stringify(plantData),
+//   });
+// };
 
 
 
@@ -58,7 +58,7 @@ export const searchPlants = (files) => {
 
   return Promise.all(promises).then((base64files) => {
 
-    const API_KEY =  "Svu3TpQRHpDX8CVSWwkbErq8QwhyDvbzYoBsqkkx26kWPXe9b9";
+    const API_KEY =  "APIKeyHere";
     
     
     const data = {
