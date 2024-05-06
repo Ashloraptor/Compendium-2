@@ -58,8 +58,9 @@ export const searchPlants = (files) => {
 
   return Promise.all(promises).then((base64files) => {
 
-    const API_KEY =  "api key here";
-    
+    const API_KEY =  "Svu3TpQRHpDX8CVSWwkbErq8QwhyDvbzYoBsqkkx26kWPXe9b9";
+    // const API_KEY =  {process.env.REACT_APP_SECRET_KEY};
+    // console.log(API_KEY);
     
     const data = {
       api_key: API_KEY,
@@ -99,3 +100,4 @@ export const searchPlants = (files) => {
     });
   });
 };
+

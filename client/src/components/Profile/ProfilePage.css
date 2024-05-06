@@ -2,3 +2,7 @@ body{
     background-color: seagreen;
     color: white;
 }
+
+.profile .add-plant-button {
+    display: none;
+}

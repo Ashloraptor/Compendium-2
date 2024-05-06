@@ -43,4 +43,3 @@ const PlantSearchForm = ({ onSearch }) => {
 };
 
 export default PlantSearchForm;
-//fix to work with api
