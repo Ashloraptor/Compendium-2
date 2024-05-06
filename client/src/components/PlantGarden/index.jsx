@@ -102,7 +102,7 @@ export default function PlantGarden({ plants }) {
   };
 
   return (
-    <div>
+    <div className='container'>
       <ImageList>
         <ImageListItem key='Subheader' cols={2}>
           <ListSubheader sx={{ fontSize: '24px' }} component='div'>

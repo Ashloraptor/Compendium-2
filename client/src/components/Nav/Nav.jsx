@@ -32,7 +32,7 @@ const Nav = ({}) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, bgcolor: green['#00c853'] }}>
+    <Box sx={{ flexGrow: 11, bgcolor: green['#00c853'] }}>
       <AppBar position='static'>
         <Toolbar>
           {Auth.loggedIn() ? (
@@ -44,6 +44,7 @@ const Nav = ({}) => {
                   bgcolor: 'white',
                   color: 'green',
                   cursor: 'pointer',
+                  size: 'large',
                 }}
               >
                 <LocalFloristIcon />
@@ -61,8 +62,8 @@ const Nav = ({}) => {
                     filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                     mt: 1.5,
                     '& .MuiAvatar-root': {
-                      width: 32,
-                      height: 32,
+                      width: 132,
+                      height: 232,
                       ml: -0.5,
                       mr: 1,
                     },
@@ -128,22 +129,6 @@ const Nav = ({}) => {
           <Button
             component={Link}
             to='/search-plant'
-            sx={{
-              m: 1,
-              color: 'green',
-              bgcolor: 'white',
-              ':hover': {
-                bgcolor: 'green',
-                color: 'white',
-              },
-            }}
-          >
-            Search Plant
-          </Button>
-
-          <Button
-            component={Link}
-            to='/ImageFinder'
             sx={{
               m: 1,
               color: 'green',
