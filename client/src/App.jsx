@@ -90,6 +90,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/search-plant' element={<SearchPlantForm />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/plant/:id' element={<Plant />} />

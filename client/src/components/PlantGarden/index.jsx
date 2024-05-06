@@ -85,7 +85,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'; // Import Button instead of Chip
 import AddIcon from '@mui/icons-material/Add';
 import AddPlants from '../AddPlants/AddPlants';
 import { Link } from 'react-router-dom';
@@ -102,14 +102,14 @@ export default function PlantGarden({ plants }) {
   };
 
   return (
-    <div className='container'>
+    <div>
       <ImageList>
         <ImageListItem key='Subheader' cols={2}>
           <ListSubheader sx={{ fontSize: '24px' }} component='div'>
             Favorite plants!
           </ListSubheader>
+          {/* Use Button component instead of Chip */}
           <Button
-            className="add-plant-button"
             startIcon={<AddIcon />}
             onClick={handleClickOpen}
             variant='outlined'

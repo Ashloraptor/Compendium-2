@@ -126,9 +126,12 @@ const Nav = ({}) => {
               </Button>
             </>
           )}
+          
+          
+
           <Button
             component={Link}
-            to='/search-plant'
+            to='/ImageFinder'
             sx={{
               m: 1,
               color: 'green',
