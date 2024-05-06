@@ -30,6 +30,7 @@ export default function PlantCard({ plantInfo }) {
       }}
     >
       <CardMedia
+        className="card-img"
         sx={{ width: 350}}
         component="img"
         height='auto'

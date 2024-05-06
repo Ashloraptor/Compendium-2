@@ -17,7 +17,7 @@ const ProfilePage = () => {
       <h1>Your Compendium</h1>
       <div>
         <h2>Username: {username}</h2>
-        <p>Email: {email}</p>
+        {/* <p>Email: {email}</p> */}
       </div>
       {/* Render the PlantGarden component without passing the showAddButton prop */}
       <PlantGarden plants={plants} />

@@ -122,7 +122,7 @@ const Nav = ({}) => {
                   },
                 }}
               >
-                Login In
+                Login
               </Button>
             </>
           )}
