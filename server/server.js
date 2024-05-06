@@ -41,6 +41,8 @@
 
 // // Call the async function to start the server
 //   startApolloServer();
+// const dotenv = require('dotenv').config()
+require('dotenv').config({path: './env'});
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');

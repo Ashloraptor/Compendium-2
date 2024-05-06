@@ -4,11 +4,14 @@ import react from '@vitejs/plugin-react';
 // const env = loadEnv(mode, process.cwd(),'');
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode}) =>{
+export default defineConfig(({command, mode}) =>{
   const env = loadEnv(mode, process.cwd(), '');
   return{
+    //vite config
     define:{
-      'process.env.REACT_APP_SECRET_KEY': JSON.stringify(env.REACT_APP_SECRET_KEY)
+      'process.env': process.env
+      // 'process.env.REACT_APP_SECRET_KEY': JSON.stringify(env.REACT_APP_SECRET_KEY)
+      // 'process.env.VITE_SECRET_KEY': JSON.stringify(env.VITE_SECRET_KEY)
     },
   
   plugins: [react()],

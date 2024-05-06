@@ -41,6 +41,9 @@
 // };
 
 
+// const test = require('dotenv').config()
+import dotenv from 'dotenv';
+// console.log(test)
 
 
 export const searchPlants = (files) => {
@@ -57,9 +60,16 @@ export const searchPlants = (files) => {
   });
 
   return Promise.all(promises).then((base64files) => {
+    
+    // console.log(import.meta.env.local)
+    // console.log(import.meta.env.SECRET_KEY)
+    // console.log(import.meta.env.VITE_SECRET_KEY)
     console.log(process.env.REACT_APP_SECRET_KEY)
-    const API_KEY =  "APIKeyHere";
-    // const API_KEY =  process.env.REACT_APP_SECRET_KEY;
+    // const API_KEY =  "APIKeyHere";
+    // const API_KEY =  import.meta.env.local;
+    // const API_KEY =  import.meta.env.SECRET_KEY;
+    // const API_KEY =  import.meta.env.VITE_SECRET_KEY;
+    const API_KEY =  process.env.REACT_APP_SECRET_KEY;
     // console.log(API_KEY);
     
     const data = {
