@@ -1,51 +1,4 @@
-
-// export const getMe = (token) => {
-//   return fetch("/api/users/me", {
-//     headers: {
-//       "Content-Type": "application/json",
-//       authorization: `Bearer ${token}`,
-//     },
-//   });
-// };
-
-// export const AddUser = (userData) => {
-//   return fetch("/api/users", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(userData),
-//   });
-// };
-
-// export const login = (userData) => {
-//   return fetch("/api/users/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(userData),
-//   });
-// };
-
-
-// export const savePlant = (plantData, token) => {
-//   return fetch("/api/users", {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//       authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify(plantData),
-//   });
-// };
-
-
-// const test = require('dotenv').config()
 import dotenv from 'dotenv';
-// console.log(test)
-
-
 export const searchPlants = (files) => {
   const promises = files.map((file) => {
     return new Promise((resolve, reject) => {
@@ -60,17 +13,9 @@ export const searchPlants = (files) => {
   });
 
   return Promise.all(promises).then((base64files) => {
-    
-    // console.log(import.meta.env.local)
-    // console.log(import.meta.env.SECRET_KEY)
-    console.log(import.meta.env.VITE_SECRET_KEY)
-    // console.log(process.env.REACT_APP_SECRET_KEY)
-    // const API_KEY =  "APIKeyHere";
-    // const API_KEY =  import.meta.env.local;
-    // const API_KEY =  import.meta.env.SECRET_KEY;
+
     const API_KEY =  import.meta.env.VITE_SECRET_KEY;
-    // const API_KEY =  process.env.REACT_APP_SECRET_KEY;
-    // console.log(API_KEY);
+    
     
     const data = {
       api_key: API_KEY,
@@ -110,3 +55,4 @@ export const searchPlants = (files) => {
     });
   });
 };
+
