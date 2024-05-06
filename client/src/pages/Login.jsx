@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
 import { blue } from '@mui/material/colors';
+import { green } from '@mui/material/colors';
 
 
 
@@ -70,7 +71,7 @@ export default function Login() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: blue[500] }}>
+          <Avatar sx={{ m: 1, bgcolor: green[500] }}>
             <LocalFloristIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>

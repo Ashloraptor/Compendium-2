@@ -1,8 +1,8 @@
-//saved plants will go here//
-//this will use the queries and pull from the plantsearch card
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { ME } from '../../utils/queries';
+import PlantGarden from '../PlantGarden/index';
+import './ProfilePage.css'
 
 const ProfilePage = () => {
   const { loading, error, data } = useQuery(ME);
@@ -10,34 +10,19 @@ const ProfilePage = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const { username, email, savedPlants } = data.me;
+  const { username, email, plants } = data.me;
 
   return (
     <div className="profile">
-      <h1>Profile</h1>
+      <h1>Your Compendium</h1>
       <div>
         <h2>Username: {username}</h2>
-        <p>Email: {email}</p>
+        {/* <p>Email: {email}</p> */}
       </div>
-      <div>
-        <h2>Saved Plants</h2>
-        <ul>
-          {savedPlants.map((plant) => (
-            <li key={plant._id}>
-              <img src={plant.image} alt={plant.title} />
-              <p>{plant.title}</p>
-              <p>{plant.description}</p>
-              {plant.comment && (
-                <p>Comment: {plant.comment.text}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Render the PlantGarden component without passing the showAddButton prop */}
+      <PlantGarden plants={plants} />
     </div>
   );
 };
 
 export default ProfilePage;
-
-///connect to api

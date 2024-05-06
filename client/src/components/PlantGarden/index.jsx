@@ -32,6 +32,7 @@ export default function PlantGarden({ plants, user }) {
         <ListSubheader sx={{ fontSize: '24px' }} component='div'>
           Favorite plants!
           <Chip
+          className='add-plant-button'
             sx={{
               fontSize: '14px',
               width: 132,

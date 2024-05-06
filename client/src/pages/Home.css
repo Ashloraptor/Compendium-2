@@ -1,0 +1,19 @@
+
+header {
+    width: 90%;
+}
+
+img {
+    height: 200px;
+    width: 400px;
+}
+
+.container {
+    border: solid;
+    padding: 10px;
+    padding: 5px;
+    flex-direction: column;
+    display: flex;
+    background-color: seagreen;
+    background-image: none;
+}

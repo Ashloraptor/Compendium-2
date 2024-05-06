@@ -57,7 +57,6 @@ export const UPDATE_USER = gql`
       username
       email
       about
-     
     }
   }
 `;
@@ -68,7 +67,6 @@ export const ADD_PLANT = gql`
     $commonName: String!
     $imagePath: String!
     $description: String
-    
   ) {
     addPlant(
       scientific_name: $scientificName
@@ -82,6 +80,23 @@ export const ADD_PLANT = gql`
       common_name
       description
       image_path
+    }
+  }
+`;
+
+export const ADD_PLANT_TO_PROFILE = gql`
+  mutation ADD_PLANT_TO_PROFILE($plantId: ID!) {
+    addPlantToProfile(plantId: $plantId) {
+      _id
+      username
+      email
+      savedPlants {
+        _id
+        scientific_name
+        common_name
+        description
+        image_path
+      }
     }
   }
 `;
@@ -141,7 +156,6 @@ export const ADD_PLANT_HISTORY = gql`
         createdAt
         note_body
       }
-
     }
   }
 `;
