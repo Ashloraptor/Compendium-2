@@ -1,0 +1,5 @@
+{
+    "env":{
+        "VITE_SECRET_KEY" : "bdKVmf7eGU9F7pThLHlHOPG5axdB1pdPscutn0vB5EMdg6Y4As"
+    }
+}

@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 export const searchPlants = (files) => {
   const promises = files.map((file) => {
     return new Promise((resolve, reject) => {
@@ -13,9 +14,8 @@ export const searchPlants = (files) => {
 
   return Promise.all(promises).then((base64files) => {
 
-    const API_KEY =  "Svu3TpQRHpDX8CVSWwkbErq8QwhyDvbzYoBsqkkx26kWPXe9b9";
-    // const API_KEY =  {process.env.REACT_APP_SECRET_KEY};
-    // console.log(API_KEY);
+    const API_KEY =  import.meta.env.VITE_SECRET_KEY;
+    
     
     const data = {
       api_key: API_KEY,
